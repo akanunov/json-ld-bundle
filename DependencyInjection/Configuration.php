@@ -17,6 +17,6 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        return new TreeBuilder();
+        return new TreeBuilder('secit.json_ld');
     }
 }
