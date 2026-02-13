@@ -5,18 +5,14 @@ namespace SecIT\JsonLdBundle\Service;
 use SecIT\JsonLdBundle\DependencyInjection\JsonLdAwareInterface;
 use SecIT\JsonLdBundle\Transformer\TransformerInterface;
 use SecIT\SchemaOrg;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  * Class JsonLd.
  *
  * @author Tomasz Gemza
  */
-class JsonLd implements ContainerAwareInterface
+class JsonLd
 {
-    use ContainerAwareTrait;
-
     /**
      * Loaded object transformers.
      *

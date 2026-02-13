@@ -15,8 +15,19 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder():TreeBuilder
     {
-        return new TreeBuilder('secit.json_ld');
+        $treeBuilder = new TreeBuilder('secit_json_ld');
+        $rootNode = $treeBuilder->getRootNode();
+
+        // Define configuration structure here
+        $rootNode
+            ->children()
+            // example:
+            // ->scalarNode('enabled')->defaultTrue()->end()
+            ->end()
+        ;
+
+        return $treeBuilder;
     }
 }

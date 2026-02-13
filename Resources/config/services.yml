@@ -2,13 +2,11 @@ services:
     secit.json_ld:
         public: true
         class: SecIT\JsonLdBundle\Service\JsonLd
-        calls:
-            - ['setContainer', ['@service_container']]
 
     secit.json_ld.twig_extension:
         class: SecIT\JsonLdBundle\Twig\JsonLdExtension
-        calls:
-            - ['setContainer', ['@service_container']]
         public: false
+        arguments:
+            $jsonLd: '@secit.json_ld'
         tags:
             - { name: twig.extension }

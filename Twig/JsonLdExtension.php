@@ -2,8 +2,7 @@
 
 namespace SecIT\JsonLdBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use SecIT\JsonLdBundle\Service\JsonLd;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -12,9 +11,12 @@ use Twig\TwigFilter;
  *
  * @author Tomasz Gemza
  */
-class JsonLdExtension extends AbstractExtension implements ContainerAwareInterface
+class JsonLdExtension extends AbstractExtension
 {
-    use ContainerAwareTrait;
+    public function __construct(private readonly JsonLd $jsonLd)
+    {
+    }
+
 
     /**
      * {@inheritdoc}
@@ -43,6 +45,6 @@ class JsonLdExtension extends AbstractExtension implements ContainerAwareInterfa
      */
     public function jsonLdFilter($object)
     {
-        return $this->container->get('secit.json_ld')->generate($object);
+        return $this->jsonLd->generate($object);
     }
 }
